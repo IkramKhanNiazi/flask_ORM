@@ -1,0 +1,53 @@
+<html>
+   <head>
+      <title>Country Example</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <h1 id="messgae">Please wait</h1>
+      <table class="table" id="country_table">
+         <thead>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Name</th>
+               <th scope="col">Flag</th>
+            </tr>
+         </thead>
+         <tbody>
+            
+         </tbody>
+      </table>
+   </body>
+   <script>
+   $('#country_table').hide()
+
+   $.ajax({
+      url: 'https://restcountries.eu/rest/v2/all',
+      success: function (response) {
+         countries = response;
+         for (index in countries){
+            name = countries[index]['name'];
+            flag = countries[index]['flag'];
+            $('#messgae').hide();
+            
+
+            var row = '<tr>' +
+            '<th scope="row">'+index+'</th>' +
+            '<td>'+name+'</td>' +
+            '<td><img src="'+flag+'" class="img-rounded" width="50" height="50"> </td></tr>';
+            $('#country_table tbody').append(row);
+            $('#country_table').show();
+
+            
+         }
+         
+      },
+      error: function (error) {
+         console.log(error);
+      },
+   })
+
+   </script>
+</html>
