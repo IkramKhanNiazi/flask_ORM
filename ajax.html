@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    $.ajax({
+        url: 'http://127.0.0.1:5000/todo/api',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+        success: function (todoItems) {
+            for (todoIndex in todoItems){
+                console.log(todoItems[todoIndex].title);
+                
+                
+            }
+        },
+    })
+</script>
+
+</html>
